@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Varta-Bold';
+    src:  url('varta-font/Varta-Bold.woff') format('woff')
+}
+@font-face {
+    font-family: 'Varta-Regular';
+    src:  url('varta-font/Varta-Regular.woff') format('woff')
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect,  */
+    position: relative;
+    font-size: 25px;
+    font-family: Varta-Regular;
+}
+
+@media(max-width: 640px){
+    html,body{
+        font-size: 18px;
+    }
+}
