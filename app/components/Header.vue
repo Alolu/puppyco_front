@@ -6,7 +6,7 @@
             <li class="nav__link link_1">
                 <a>Categories</a>
             </li>
-            <li class="nav__link link_2">
+            <li v-if="!loggedOn" class="nav__link link_2">
                 <Modal title="Se connecter">
                     <div class="modal__flex">
                         <div class="modal__box">
@@ -62,6 +62,7 @@ export default {
         return {
             username: 'fefe',
             password: '',
+            loggedOn: false 
         }
     },
     methods: {
@@ -71,7 +72,7 @@ export default {
                 username: this.username,
                 password: this.password
             }).then((resp)=>{
-                console.log(resp)
+                this.loggedOn = true;
             })
         }
     }

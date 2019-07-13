@@ -14,7 +14,7 @@ module.exports = (router) => {
         (req, res) => {
             console.log(req.session.token);
             clientService.loginClient(req.body).then((resp)=>{
-                req.session.token = resp.data
+                if(resp.status == 200) req.session.token = resp.data
                 console.log(resp.status)
                 res.status(resp.status).json(resp.data)
             })

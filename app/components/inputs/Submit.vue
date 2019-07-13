@@ -21,6 +21,10 @@ export default {
         padding: 9px 14px;
         width: 205px;
     }
+
+    .submit__input:focus {
+        outline: 0 none;
+    }
     .submit__large {
         width: 250px;
     } 
