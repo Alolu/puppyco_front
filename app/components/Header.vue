@@ -7,11 +7,11 @@
                 <a>Categories</a>
             </li>
             <li class="nav__link link_2">
-                <Modal title="Se connecter">
-                    <h3> Connexion </h3>
-                    <Input v-model="username" :large="true" type="text" placeholder="Login" />
-                    <Input v-model="password" :large="true" type="password" placeholder="Password" />
-                    <Submit @click.native="logClient" />
+                <Modal title="authentication">
+                    <h3 class="header__title"> Se connecter </h3>
+                    <div class="header__input"><Input v-model="username" :large="true" type="text" placeholder="Login" /></div>
+                    <div class="header__input"><Input v-model="password" :large="true" type="password" placeholder="Password" /></div>
+                    <Submit class="header__submit" :large="true" @click.native="logClient" />
                 </Modal>
             </li>
             <li class="nav__link link_3">
@@ -69,6 +69,12 @@ export default {
 </script>
 
 <style>
+    .header__submit {
+        margin-top: 20px;
+    }
+    .header__input {
+        margin-top: 15px;
+    }
     .nav__links__container{
         list-style-type: none;
         margin: 0;
