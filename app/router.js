@@ -58,7 +58,8 @@ module.exports.init = (app, config) => {
     let sessionConfig = {
         name: "session",
         keys: [
-            "CHANGE_ME",
+            "test",
+            "test"
         ],
         resave: true,
         saveUninitialized: true,

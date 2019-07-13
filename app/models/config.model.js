@@ -1,6 +1,6 @@
 //@ts-check
 const path = require("path");
-const DEV_BASEURL = 'localhost:8000'
+const DEV_BASEURL = 'http://localhost:8000'
 const PROD_BASEURL = 'adresse de prod'
 
 function getBaseUrl(env){
