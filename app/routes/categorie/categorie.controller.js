@@ -5,7 +5,7 @@
  * @param {object} router
  */
 module.exports = (router) => {
-    router.get("/categorie/{cat}",
+    router.get("/categorie",
         /**
          * @param {object} req
          * @param {object} res

@@ -68,6 +68,7 @@ module.exports.init = (app, config) => {
             httpOnly: true,
         },
     };
+    console.log(env)
     if (env === "production") {
         app.set("trust proxy", 1);
         sessionConfig.cookie.secure = true;

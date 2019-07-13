@@ -6,6 +6,7 @@
         "test": "npm run lint && NODE_ENV=development nyc ava",
         "lint": "tslint --project tsconfig.json --fix",
         "copy": "ncp app dist",
+        "prod": "ENV=production NODE_ENV=production node app",
         "start": "nodemon app/index.js",
         "preversion": "npm run test",
         "version": "git add .",

@@ -3,9 +3,20 @@
         <h1 class="nav__title"> PuppyCo'</h1>
         <img class="nav__logo" src="assets/img/logo.svg">
         <ul class="nav__links__container">
-            <li class="nav__link link_1"><a>Categories</a></li>
-            <li class="nav__link link_2"><a>Se connecter</a></li>
-            <li class="nav__link link_3"><Input type="text" placeholder="Rechercher..." :large="true" /></li>
+            <li class="nav__link link_1">
+                <a>Categories</a>
+            </li>
+            <li class="nav__link link_2">
+                <Modal title="Se connecter">
+                    <h3> Connexion </h3>
+                    <Input type="text" placeholder="Login" />
+                    <Input type="password" placeholder="Password" />
+                    <Submit />
+                </Modal>
+            </li>
+            <li class="nav__link link_3">
+                <Input type="text" placeholder="Rechercher..." :large="true" />
+            </li>
         </ul>
         <div class="nav__toggle">
             <input class='nav__hamburger' type="checkbox" />
@@ -27,10 +38,14 @@
 
 <script>
 import Input from './inputs/Input.vue'
+import Submit from './inputs/Submit.vue'
+import Modal from './Modal.vue'
 export default {
     name: 'Header',
     components: {
-        Input
+        Input,
+        Modal,
+        Submit
     },
     data: function () {
         return {}
@@ -55,8 +70,6 @@ export default {
         text-align: center;
         padding-right: 20px;
         margin-top: 10px;
-    }
-    .nav__link a {
         color:#FF9A02;
         text-decoration: none;
         font-family: Varta-Regular;
