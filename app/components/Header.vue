@@ -27,8 +27,9 @@
                 <a href="#"><li>Categories</li></a>
                 <a href="#"><li>S'inscrire</li></a>
                 <li> Connexion </li>
-                <li><Input type="text" placeholder="Login" /></li>
-                <li><Input type="password" placeholder="Password" /></li>
+                <li><Input v-model="username" type="text" placeholder="Login" /></li>
+                <li><Input v-model="password" type="password" placeholder="Password" /></li>
+                <li><Submit @click.native="logClient" /></li>
                 <li> Rechercher </li>
                 <li><Input type="text" placeholder="Rechercher..." /></li>
             </ul>
