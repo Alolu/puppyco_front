@@ -7,11 +7,21 @@
                 <a>Categories</a>
             </li>
             <li class="nav__link link_2">
-                <Modal title="authentication">
-                    <h3 class="header__title"> Se connecter </h3>
-                    <div class="header__input"><Input v-model="username" :large="true" type="text" placeholder="Login" /></div>
-                    <div class="header__input"><Input v-model="password" :large="true" type="password" placeholder="Password" /></div>
-                    <Submit class="header__submit" :large="true" @click.native="logClient" />
+                <Modal title="Se connecter">
+                    <div class="modal__flex">
+                        <div class="modal__box">
+                            <h3 class="header__title"> Se connecter </h3>
+                            <div class="header__input"><Input v-model="username" :large="true" type="text" placeholder="Login" /></div>
+                            <div class="header__input"><Input v-model="password" :large="true" type="password" placeholder="Password" /></div>
+                            <Submit class="header__submit" :large="true" @click.native="logClient" />
+                        </div>
+                        <div class="modal__box">
+                            <h3 class="header_title"> S'inscrire</h3>
+                            <div class="header__input"><Input v-model="username" :large="true" type="text" placeholder="Login" /></div>
+                            <div class="header__input"><Input v-model="password" :large="true" type="password" placeholder="Password" /></div>
+                            <Submit class="header__submit" :large="true" @click.native="logClient" />
+                        </div>
+                    </div>    
                 </Modal>
             </li>
             <li class="nav__link link_3">
@@ -69,6 +79,18 @@ export default {
 </script>
 
 <style>
+    .modal__flex {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        justify-content: space-around;
+    }
+    .modal__box {
+        margin: 0 auto;
+    }
     .header__submit {
         margin-top: 20px;
     }

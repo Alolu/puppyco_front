@@ -23,6 +23,10 @@ export default {
         width: 175px;
         padding: 9px 14px
     }
+    .input:focus {
+        outline: 0 none
+    }
+
     .largeInput {
         width: 220px;
     }

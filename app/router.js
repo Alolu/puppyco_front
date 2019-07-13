@@ -61,8 +61,8 @@ module.exports.init = (app, config) => {
     let sessionConfig = {
         name: "session",
         keys: [
-            "test",
-            "test"
+            "test1",
+            "test2"
         ],
         resave: true,
         saveUninitialized: true,
@@ -71,6 +71,7 @@ module.exports.init = (app, config) => {
             secure: false,
             httpOnly: true,
         },
+        maxAge: 24 * 60 * 60 * 1000
     };
     console.log(env)
     if (env === "production") {
