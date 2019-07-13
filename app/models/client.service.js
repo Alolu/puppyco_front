@@ -4,15 +4,15 @@ const https = require('https')
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 class Client {
     constructor(){
-        this.test = baseUrl;
+        this.baseUrl = baseUrl;
     }
+    // @ts-ignore
     loginClient(req){
-        console.log(baseUrl)
-        axios.post(baseUrl + '/login_check',req).then((resp)=>{
-            console.log(resp.data);
-        }).catch((err)=>{
-            console.log(err.response.data)
-        })
+            return axios.post(baseUrl + '/login_check',req).then((resp)=>{
+                return resp
+            }).catch((err)=>{
+                return err.response
+            })
     }
 }
 

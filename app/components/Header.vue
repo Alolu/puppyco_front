@@ -9,9 +9,9 @@
             <li class="nav__link link_2">
                 <Modal title="Se connecter">
                     <h3> Connexion </h3>
-                    <Input type="text" placeholder="Login" />
-                    <Input type="password" placeholder="Password" />
-                    <Submit />
+                    <Input v-model="username" :large="true" type="text" placeholder="Login" />
+                    <Input v-model="password" :large="true" type="password" placeholder="Password" />
+                    <Submit @click.native="logClient" />
                 </Modal>
             </li>
             <li class="nav__link link_3">
@@ -48,7 +48,21 @@ export default {
         Submit
     },
     data: function () {
-        return {}
+        return {
+            username: 'fefe',
+            password: '',
+        }
+    },
+    methods: {
+        logClient(){
+            console.log(this.username)
+            axios.post('/login',{
+                username: this.username,
+                password: this.password
+            }).then((resp)=>{
+                console.log(resp)
+            })
+        }
     }
 }
 </script>

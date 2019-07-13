@@ -31,6 +31,9 @@ module.exports.init = (app, config) => {
         rootPath: path.join(__dirname, "routes"),
         head: {
             styles: [{ style: "assets/style.css" }],
+            scripts: [
+                {src: "https://unpkg.com/axios/dist/axios.min.js"}
+            ],
             metas : [
                 {name: 'viewport', content:'width=device-width, initial-scale=1.0'}
             ]
