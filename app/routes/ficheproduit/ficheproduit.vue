@@ -1,10 +1,11 @@
 <template>
 <div class="product">
  <Header></Header>
-    <div class="product" :class="{large: large}">
-        <img src="assets/img/products/test.png" class="product__img"/>
+ <Layout></Layout>
+    <div class="product">
+    <img src="assets/img/products/test.png" class="product__img"/>
         <div class="product__info"> 
-            <div>
+            <div >
                 <span class="product__name">Le nom</span>
                 <span class="product__desc">La description</span>
                 <span class="product__price">15$</span>
@@ -16,8 +17,10 @@
 <script>
 import Header from '../../components/Header.vue'
 import Layout from '../../components/Layout.vue'
+
 export default {
     components: {
+        Header,
         Layout,
     },
     data: function () {
@@ -29,44 +32,32 @@ export default {
 </script>
 <style>
 .product {
-    width: 100%;
-    height: 50vh;
-    position:static;
-    display:block;
+    display: block;
     color: white;
-    cursor: pointer;
 }
 
 .large {
-    height: 90vh;
+   
 }
 .product__info {
-    position: absolute;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    top:0;
-    transition: opacity 0s linear 300ms, opacity 300ms;
+display: block;   
 }
 .product__info div {
-    padding: 15px;
+display: block;   
 }
 .product__name {
-    display: block;
-    position: absolute;
-    top: 40%; left: 40%;
+display: block;
+text-align: center;  
 }
 .product__desc {
-    display: block;
+display: block;  
 }
 .product__price {
-    position: absolute;
-    bottom: 5%;
+display: block;   
 }
 .product__img {
-    display: block;
-    width: 100%;
-    height: 100%;
+display: block;
+margin: 5% 20%; 
 }
 @media(min-width: 960px){
     .product__info:hover {
@@ -84,8 +75,8 @@ export default {
         height: 350px;
     }
     .product {
-        width: 50%;
-        height: 350px;
+        width: 100%;
+        height: 100%;
     }
 
     .product__desc {
