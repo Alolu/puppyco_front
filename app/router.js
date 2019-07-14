@@ -38,12 +38,12 @@ module.exports.init = (app, config) => {
                 {name: 'viewport', content:'width=device-width, initial-scale=1.0'}
             ]
         },
+        data : {
+            loggedOn: false
+        }
     };
-
     // @ts-ignore
-    const expressVueMiddleware = expressVue.init(vueOptions);
-    app.use(expressVueMiddleware);
-
+    app.use(expressVue.init(vueOptions));
     //Security
     app.use(helmet());
     app.disable("x-powered-by");

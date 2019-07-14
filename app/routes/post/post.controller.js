@@ -12,12 +12,32 @@ module.exports = (router) => {
          * @param {object} res
          */
         (req, res) => {
-            console.log(req.session.token);
             clientService.loginClient(req.body).then((resp)=>{
-                if(resp.status == 200) req.session.token = resp.data
-                console.log(resp.status)
+                if(resp.status == 200) req.session.token = resp.data.token
                 res.status(resp.status).json(resp.data)
             })
         },
     );
+
+    router.get("/verify",
+        /**
+         * @param {object} req
+         * @param {object} res
+         */
+        (req,res)=>{
+            let resp = clientService.verifyClient(req);
+            res.json(resp)        
+        }
+    )
+
+    router.get("/logout",
+        /**
+         * @param {object} req
+         * @param {object} res
+         */
+        (req,res)=>{
+            let resp = clientService.logoutClient(req);
+            res.json(resp)        
+        }
+    )
 };

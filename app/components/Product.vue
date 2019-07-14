@@ -3,9 +3,9 @@
         <img src="assets/img/products/test.png" class="product__img"/>
         <div class="product__info"> 
             <div>
-                <span class="product__name">Le nom</span>
-                <span class="product__desc">La description</span>
-                <span class="product__price">15$</span>
+                <span class="product__name">{{ product.titre }}</span>
+                <span class="product__desc">{{ product.description }}</span>
+                <span class="product__price">{{ product.prix }}€</span>
             </div>
         </div>
     </div>
@@ -16,6 +16,9 @@ export default {
         large: {
             type: Boolean,
             default: false
+        },
+        product : {
+            type: Object
         }
     }
 }

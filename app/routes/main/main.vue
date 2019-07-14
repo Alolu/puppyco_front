@@ -1,25 +1,27 @@
 <template>
     <div class="products">
-        <Layout></Layout>
+        <Header :loggedOn="loggedOn"></Header>
         <div class="product_container">
-        <Product :large='product.large' v-for="(product,i) in products" :key='i'></Product>
+        <Product :product="product" :large='i == 2 || i == 5' v-for="(product,i) in products" :key='i'></Product>
         </div>
     </div>
 </template>
 
 <script>
-import Layout from '../../components/Layout.vue'
+import Header from '../../components/Header.vue'
 import Product from '../../components/Product.vue'
+import PageMixin from '../../components/Page';
 export default {
     components: {
-        Layout,
+        Header,
         Product
     },
     data: function () {
         return {
             
         }
-    }
+    },
+    mixins: [PageMixin],
 }
 </script>
 <style>
