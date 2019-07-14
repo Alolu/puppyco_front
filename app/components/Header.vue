@@ -2,7 +2,7 @@
     <section class="header">
     <nav class="nav">
         <h1 class="nav__title"> PuppyCo'</h1>
-        <img class="nav__logo" src="assets/img/logo.svg">
+        <img class="nav__logo" src="/assets/img/logo.svg">
         <ul class="nav__links__container">
             <li class="nav__link link_1">
                 <a>Categories</a>

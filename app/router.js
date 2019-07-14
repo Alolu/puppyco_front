@@ -30,7 +30,7 @@ module.exports.init = (app, config) => {
     const vueOptions = {
         rootPath: path.join(__dirname, "routes"),
         head: {
-            styles: [{ style: "assets/style.css" }],
+            styles: [{ style: "/assets/style.css" }],
             scripts: [
                 {src: "https://unpkg.com/axios/dist/axios.min.js"}
             ],
