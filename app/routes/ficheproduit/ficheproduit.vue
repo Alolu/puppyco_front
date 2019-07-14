@@ -1,27 +1,22 @@
 <template>
 <div class="product">
  <Header></Header>
- <Layout></Layout>
     <div class="product">
     <img src="assets/img/products/test.png" class="product__img"/>
-        <div class="product__info"> 
-            <div >
-                <span class="product__name">Le nom</span>
-                <span class="product__desc">La description</span>
-                <span class="product__price">15$</span>
-            </div>
+        <div class="product__info">    
+            <span class="product__name">Le nom</span>
+            <span class="product__desc">La description</span>
+            <span class="product__price">15$</span>
         </div>
     </div>
 </div>
 </template>
 <script>
 import Header from '../../components/Header.vue'
-import Layout from '../../components/Layout.vue'
 
 export default {
     components: {
         Header,
-        Layout,
     },
     data: function () {
         return {
@@ -32,32 +27,41 @@ export default {
 </script>
 <style>
 .product {
-    display: block;
-    color: white;
+    height:100%;
+    width:100%;
+    color: black;
 }
 
 .large {
    
 }
 .product__info {
-display: block;   
+display: inline-block;
+border: 1px solid black; 
+vertical-align: middle;
 }
 .product__info div {
-display: block;   
+display: inline-block;
+vertical-align: middle; 
 }
+
 .product__name {
 display: block;
-text-align: center;  
+text-align: center;   
 }
 .product__desc {
-display: block;  
+display: block;
+text-align: center;    
 }
 .product__price {
-display: block;   
+display: block;
+text-align: center;    
 }
 .product__img {
-display: block;
-margin: 5% 20%; 
+vertical-align: middle;
+display: inline-block;
+border: 1px solid black;  
+margin: 2% 2%;
 }
 @media(min-width: 960px){
     .product__info:hover {
