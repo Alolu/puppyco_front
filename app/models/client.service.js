@@ -1,6 +1,10 @@
 const baseUrl = require('../config').baseUrl;
-const axios = require('axios').default;
-const https = require('https')
+const api = require('./api.service').api;
+const jwt = require('jsonwebtoken')
+const fs = require('fs')
+const key = fs.readFileSync('app/jwt/public.pem');
+let setToken = require('./api.service').setToken;
+let delToken = require('./api.service').delToken;
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 class Client {
     constructor(){
@@ -8,11 +12,33 @@ class Client {
     }
     // @ts-ignore
     loginClient(req){
-            return axios.post(baseUrl + '/login_check',req).then((resp)=>{
-                return resp
-            }).catch((err)=>{
-                return err.response
-            })
+        return api.post(baseUrl + '/login_check',req).then((resp)=>{
+            setToken(resp.data.token)
+            return resp
+        }).catch((err)=>{
+            return err.response
+        })
+    }
+
+    verifyClient(req){
+        if(req.session.token) {
+            try {
+                var decodedKey = jwt.verify(req.session.token, key);
+            } catch(err) {
+                return false;
+            }
+            if(decodedKey) return true;
+            return false;
+        }
+        return false;
+    }
+
+    logoutClient(req){
+        if(req.session.token) {
+            delete req.session.token
+        }
+        delToken()
+        return true;
     }
 }
 

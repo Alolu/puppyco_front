@@ -1,4 +1,5 @@
 <template>
+    <section class="header">
     <nav class="nav">
         <h1 class="nav__title"> PuppyCo'</h1>
         <img class="nav__logo" src="assets/img/logo.svg">
@@ -24,6 +25,9 @@
                     </div>    
                 </Modal>
             </li>
+            <li v-else class="nav__link link_2">
+                <a @click="logoutClient" >Se deconnecter</a>
+            </li>
             <li class="nav__link link_3">
                 <Input type="text" placeholder="Rechercher..." :large="true" />
             </li>
@@ -45,12 +49,15 @@
             </ul>
         </div>
     </nav>
+    <div class="spacer"></div>
+    </section>
 </template>
 
 <script>
 import Input from './inputs/Input.vue'
 import Submit from './inputs/Submit.vue'
 import Modal from './Modal.vue'
+import { verify } from 'jsonwebtoken';
 export default {
     name: 'Header',
     components: {
@@ -60,19 +67,23 @@ export default {
     },
     data: function () {
         return {
-            username: 'fefe',
+            username: '',
             password: '',
-            loggedOn: false 
         }
     },
+    props: ["loggedOn"],
     methods: {
         logClient(){
-            console.log(this.username)
             axios.post('/login',{
                 username: this.username,
                 password: this.password
             }).then((resp)=>{
-                this.loggedOn = true;
+                this.$root.$emit('login')
+            })
+        },
+        logoutClient(){
+            axios.get('/logout').then((resp)=>{
+                this.$root.$emit('logout')
             })
         }
     }
@@ -80,6 +91,10 @@ export default {
 </script>
 
 <style>
+    .spacer {
+        width: 100%;
+        height: 100px;
+    }
     .modal__flex {
         display: flex;
         flex-direction: row;
