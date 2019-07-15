@@ -1,14 +1,18 @@
 <template>
-    <Header :loggedOn="loggedOn"></Header>
-    
+    <section class="wrapper">
+        <Header :loggedOn="loggedOn"></Header>
+        <Hero title="Inscription"></Hero>
+    </section>
 </template>
 <script>
 import Header from '../../components/Header.vue'
+import Hero from '../../components/Hero.vue'
 import PageMixin from '../../components/Page'
 export default {
     mixins: [PageMixin],
     components: {
-        Header
+        Header,
+        Hero
     },
     data(){
         return {
@@ -16,7 +20,7 @@ export default {
         }
     },
     mounted(){
-        window.location.replace('/')
+        if(this.loggedOn) window.location.replace('/')
     }
 }
 </script>

@@ -18,6 +18,7 @@ class Produit {
     }
 
     getProduct(id){
+        console.log(id)
         return api.get("/produit/produit/" + id).then(
             (success) => {
                 return success

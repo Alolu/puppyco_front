@@ -1,5 +1,5 @@
 <template>
-    <div class="product" :class="{large: large}">
+    <a :href="'/produit/'+product.id" class="product" :class="{large: large}">
         <img src="/assets/img/products/test.png" class="product__img"/>
         <div class="product__info"> 
             <div>
@@ -9,7 +9,7 @@
                 <Submit @click.native="ajoutPanier" class="product__action" value="Ajouter au panier" v-if="addPanier" />
             </div>
         </div>
-    </div>
+    </a>
 </template>
 <script>
 import Submit from './inputs/Submit.vue';

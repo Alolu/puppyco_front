@@ -1,8 +1,8 @@
 <template>
     <section class="header">
     <nav class="nav">
-        <h1 class="nav__title"> PuppyCo'</h1>
-        <img class="nav__logo" src="/assets/img/logo.svg">
+        <h1 @click="goToHome()" class="nav__title"> PuppyCo'</h1>
+        <img @click="goToHome()" class="nav__logo" src="/assets/img/logo.svg">
         <ul class="nav__links__container">
             <li class="nav__link link_1">
                 <a>Categories</a>
@@ -15,7 +15,7 @@
                             <div class="header__input"><Input v-model="username" :large="true" type="text" placeholder="Login" /></div>
                             <div class="header__input"><Input v-model="password" :large="true" type="password" placeholder="Password" /></div>
                             <Submit class="header__submit" :large="true" @click.native="logClient" />
-                            <div class="header__register">Pas de compte ? Vous pouvez vous inscrire <span class="modal__ici">ici</span></div>
+                            <div class="header__register">Pas de compte ? Vous pouvez vous inscrire <a href="/inscription" class="modal__ici">ici</a></div>
                         </div>
                     </div>    
                 </Modal>
@@ -35,7 +35,7 @@
             <ul class="nav__menu">
                 <a href="#"><li>Categories</li></a>
                 <div v-if="!loggedOn">
-                    <a href="#"><li>S'inscrire</li></a>
+                    <a href="/inscription"><li>S'inscrire</li></a>
                     <li> Connexion </li>
                     <li><Input v-model="username" type="text" placeholder="Login" /></li>
                     <li><Input v-model="password" type="password" placeholder="Password" /></li>
@@ -82,6 +82,9 @@ export default {
             axios.get('/logout').then((resp)=>{
                 this.$root.$emit('logout')
             })
+        },
+        goToHome(){
+            location.replace('/')
         }
     }
 }
