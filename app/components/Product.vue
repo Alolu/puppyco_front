@@ -6,12 +6,17 @@
                 <span class="product__name">{{ product.titre }}</span>
                 <span class="product__desc">{{ product.description }}</span>
                 <span class="product__price">{{ product.prix }}€</span>
+                <Submit @click.native="ajoutPanier" class="product__action" value="Ajouter au panier" v-if="addPanier" />
             </div>
         </div>
     </div>
 </template>
 <script>
+import Submit from './inputs/Submit.vue';
 export default {
+    components: {
+        Submit
+    },
     props: {
         large: {
             type: Boolean,
@@ -19,6 +24,23 @@ export default {
         },
         product : {
             type: Object
+        },
+        addPanier:{
+            type: Boolean,
+            default: false
+        }
+    },
+    methods:{
+        ajoutPanier(){
+            axios.post("/addToPanier",this.product).then(
+                (success)=>{
+                    (new Notyf()).confirm('Article ajouté au panier!');
+                },
+                (error)=>{
+                    (new Notyf()).alert("Erreur lors de l'ajout au panier.");
+                }
+            )
+            
         }
     }
 }
@@ -33,7 +55,11 @@ export default {
     cursor: pointer;
     padding: 0;
 }
-
+.product__action {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
 .large {
     height: 90vh;
 }

@@ -30,9 +30,13 @@ module.exports.init = (app, config) => {
     const vueOptions = {
         rootPath: path.join(__dirname, "routes"),
         head: {
-            styles: [{ style: "/assets/style.css" }],
+            styles: [
+                { style: "/assets/style.css" },
+                { style: "/assets/notyf.min.css"}
+            ],
             scripts: [
-                {src: "https://unpkg.com/axios/dist/axios.min.js"}
+                {src: "https://unpkg.com/axios/dist/axios.min.js"},
+                {src: "/assets/js/notyf.min.js"}
             ],
             metas : [
                 {name: 'viewport', content:'width=device-width, initial-scale=1.0'}

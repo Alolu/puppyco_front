@@ -3,10 +3,15 @@
         <Header></Header>
         <div class="categorie__entete">
             <h1 class="categorie__titre">{{ categorie.libelle }}</h1>
-            <span @click=changePage(-1) v-if="page > 1"> precedent </span> {{ page }} <span @click=changePage(1) v-if="page < totalPage"> suivant </span>
+            <div class="categorie__choicePagination">
+                Nb article: <span @click="changePagination(choice)" :key="i" v-for="(choice,i) in choices">{{ choice }} </span>
+            </div>
+            <div class="categorie__choicePage">
+                <span @click=changePage(-1) v-if="page > 1"> precedent </span> {{ page }} <span @click=changePage(1) v-if="page < totalPage"> suivant </span>
+            </div>
         </div>
         <div class="categorie__products">
-        <Product :product="product" v-for="(product,i) in productList" :key="i"></Product>
+        <Product :addPanier="true" :product="product" v-for="(product,i) in productList" :key="i"></Product>
         </div>
     </section>
 </template>
@@ -17,8 +22,9 @@ import PageMixin from '../../components/Page';
 export default {
     data: function(){
         return {
-            paginNumber: 4,
-            page: 1
+            paginNumber: 20,
+            page: 1,
+            choices: [10,20,50]
         }
     },
     components: {
@@ -28,6 +34,9 @@ export default {
     methods: {
         changePage(direction){
             this.page += direction
+        },
+        changePagination(choix){
+            this.paginNumber = choix
         }
     },
     computed: {

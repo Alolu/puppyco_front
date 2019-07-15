@@ -16,6 +16,17 @@ class Produit {
             }
         )
     }
+
+    getProduct(id){
+        return api.get("/produit/produit/" + id).then(
+            (success) => {
+                return success
+            },
+            (failure)=>{
+                return failure
+            }
+        )
+    }
 }
 
 module.exports = Produit
