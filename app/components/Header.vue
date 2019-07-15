@@ -15,12 +15,7 @@
                             <div class="header__input"><Input v-model="username" :large="true" type="text" placeholder="Login" /></div>
                             <div class="header__input"><Input v-model="password" :large="true" type="password" placeholder="Password" /></div>
                             <Submit class="header__submit" :large="true" @click.native="logClient" />
-                        </div>
-                        <div class="modal__box">
-                            <h3 class="header_title"> S'inscrire</h3>
-                            <div class="header__input"><Input v-model="username" :large="true" type="text" placeholder="Login" /></div>
-                            <div class="header__input"><Input v-model="password" :large="true" type="password" placeholder="Password" /></div>
-                            <Submit class="header__submit" :large="true" @click.native="logClient" />
+                            <div class="header__register">Pas de compte ? Vous pouvez vous inscrire <span class="modal__ici">ici</span></div>
                         </div>
                     </div>    
                 </Modal>
@@ -39,11 +34,13 @@
             <span></span>
             <ul class="nav__menu">
                 <a href="#"><li>Categories</li></a>
-                <a href="#"><li>S'inscrire</li></a>
-                <li> Connexion </li>
-                <li><Input v-model="username" type="text" placeholder="Login" /></li>
-                <li><Input v-model="password" type="password" placeholder="Password" /></li>
-                <li><Submit @click.native="logClient" /></li>
+                <div v-if="!loggedOn">
+                    <a href="#"><li>S'inscrire</li></a>
+                    <li> Connexion </li>
+                    <li><Input v-model="username" type="text" placeholder="Login" /></li>
+                    <li><Input v-model="password" type="password" placeholder="Password" /></li>
+                    <li><Submit @click.native="logClient" /></li>
+                </div>
                 <li> Rechercher </li>
                 <li><Input type="text" placeholder="Rechercher..." /></li>
             </ul>
@@ -69,6 +66,8 @@ export default {
         return {
             username: '',
             password: '',
+            userRegister: '',
+            passRegister: ''
         }
     },
     props: ["loggedOn"],
@@ -95,6 +94,14 @@ export default {
         width: 100%;
         height: 100px;
     }
+    .modal__ici {
+        color: #ffca37a8;
+        text-decoration: underline;
+    }
+    .header__register {
+        margin-top: 10px;
+        font-size: 0.6em;
+    }
     .modal__flex {
         display: flex;
         flex-direction: row;
@@ -102,15 +109,18 @@ export default {
         align-items: center;
         width: 100%;
         height: 100%;
-        justify-content: space-around;
+        justify-content: center;
     }
     .modal__box {
+        width: 300px;
         margin: 0 auto;
+        text-align: center;
     }
     .header__submit {
         margin-top: 20px;
     }
     .header__input {
+        display:inline-block;
         margin-top: 15px;
     }
     .nav__links__container{

@@ -1,6 +1,6 @@
 <template>
     <section class="categorie">
-        <Header></Header>
+        <Header :loggedOn="loggedOn"></Header>
         <div class="categorie__entete">
             <h1 class="categorie__titre">{{ categorie.libelle }}</h1>
             <div class="categorie__choicePagination">

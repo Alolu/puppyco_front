@@ -18,7 +18,7 @@ module.exports =  {
             this.loggedOn = false
         }
     },
-    mounted: function(){
+    created: function(){
         this.verifyClient()
         this.$on('login',this.onLogin)
         this.$on('logout',this.onLogout)
