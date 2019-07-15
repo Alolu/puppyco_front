@@ -16,7 +16,7 @@ class Client {
             setToken(resp.data.token)
             return resp
         }).catch((err)=>{
-            return err.response
+            console.log(err.response)
         })
     }
 
