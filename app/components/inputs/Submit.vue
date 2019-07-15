@@ -1,5 +1,5 @@
 <template>
-    <input class="submit__input" :class="{submit__large: large}" type="submit" />
+    <input class="submit__input" :class="{submit__large: large, 'no-width': noWidth}" type="submit" />
 </template>
 <script>
 export default {
@@ -8,7 +8,10 @@ export default {
 
         }
     },
-    props: ['large']
+    props: [
+        'large',
+        'no-width'
+    ]
 }
 </script>
 <style>
@@ -28,4 +31,8 @@ export default {
     .submit__large {
         width: 250px;
     } 
+
+    .no-width {
+    width : auto !important ;
+    }
 </style>

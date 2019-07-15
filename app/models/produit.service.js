@@ -23,7 +23,7 @@ class Produit {
                 return success
             },
             (failure)=>{
-                return failure
+                console.log(failure)
             }
         )
     }
