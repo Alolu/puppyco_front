@@ -28,7 +28,6 @@ class Client {
                 return false;
             }
             if(decodedKey) return true;
-            return false;
         }
         return false;
     }

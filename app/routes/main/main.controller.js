@@ -15,7 +15,6 @@ module.exports = (router) => {
             let data = {
                 products: await produit.getRandomProducts(req)
             };
-            console.log(data)
             req.vueOptions.head.title = "Accueil PuppyCo'";
             res.renderVue("main/main.vue", data, req.vueOptions);
         },

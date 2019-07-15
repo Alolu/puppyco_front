@@ -34,6 +34,7 @@
             <span></span>
             <ul class="nav__menu">
                 <a href="#"><li>Categories</li></a>
+                <li @click="logoutClient" v-if="loggedOn"> Deconnexion </li> 
                 <div v-if="!loggedOn">
                     <a href="/inscription"><li>S'inscrire</li></a>
                     <li> Connexion </li>

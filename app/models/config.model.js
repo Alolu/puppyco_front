@@ -6,7 +6,6 @@ const PROD_BASEURL = 'adresse de prod'
 function getBaseUrl(env){
     let baseUrl
     env == "development" ? baseUrl = DEV_BASEURL : baseUrl = PROD_BASEURL
-    console.log(baseUrl)
     return baseUrl
 }
 class Config {

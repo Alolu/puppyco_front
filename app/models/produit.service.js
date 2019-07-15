@@ -14,7 +14,9 @@ class Produit {
                 console.log(failure)
                 return false
             }
-        )
+        ).catch((err)=>{
+            console.log(err)
+        })
     }
 
     getProduct(id){

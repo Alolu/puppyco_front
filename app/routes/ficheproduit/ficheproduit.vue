@@ -1,12 +1,5 @@
 <template>
 <div class="product">
-<link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-
-<link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700' rel='stylesheet' type='text/css'>
-
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-<div class="wrapper">
 	<Header></Header>
 	<div class="content">
 		<div class="col-1-2 product__img">
@@ -17,10 +10,7 @@
             <h1 class ="produit__titre">{{product.titre}}</h1>
 			<h2>{{product.prix}} €</h2>
 			<h3>Description du produit</h3>
-			<p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, veritatis aliquid! Voluptas, nihil sed autem similique libero inventore quasi quis, delectus beatae ullam magnam labore dignissimos porro officia eveniet eaque.
-				{{product.description}}
-			</p>
+			<p>	{{product.description}} </p>
 			
 			<Submit value='Ajouter au panier' :no-width ="true" @click.native='ajouterPanier'></Submit>
 			
@@ -43,7 +33,6 @@
 		</div>
 	</div>
 </div>
-</div>
 </template>
 <script>
 import Header from '../../components/Header.vue'
@@ -60,7 +49,6 @@ export default {
         }
     },
     mixin:[PageMixin],
-
     methods:{
         ajouterPanier(){
             axios.post('/addToPanier', this.product).then(
@@ -78,7 +66,7 @@ export default {
 <style>
 
 
-.wrapper{
+.product{
 	/*margin-bottom: 100px;*/
 	width: 100%;
 }

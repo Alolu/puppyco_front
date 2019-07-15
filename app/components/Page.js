@@ -9,6 +9,8 @@ module.exports =  {
         verifyClient: function(){
             axios.get('/verify').then((resp)=>{
                 this.loggedOn = resp.data;
+            }).catch((err)=>{
+                console.log(err)
             })
         },
         onLogin: function () {
@@ -18,7 +20,7 @@ module.exports =  {
             this.loggedOn = false
         }
     },
-    created: function(){
+    beforeMount: function(){
         this.verifyClient()
         this.$on('login',this.onLogin)
         this.$on('logout',this.onLogout)

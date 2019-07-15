@@ -20,7 +20,9 @@ export default {
         }
     },
     mounted(){
-        if(this.loggedOn) window.location.replace('/')
+        this.$on('login',()=>{
+            location.replace('/')
+        })
     }
 }
 </script>
