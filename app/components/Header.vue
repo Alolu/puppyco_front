@@ -65,9 +65,7 @@ export default {
     data: function () {
         return {
             username: '',
-            password: '',
-            userRegister: '',
-            passRegister: ''
+            password: ''
         }
     },
     props: ["loggedOn"],

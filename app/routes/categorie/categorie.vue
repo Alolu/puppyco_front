@@ -1,15 +1,14 @@
 <template>
     <section class="categorie">
         <Header :loggedOn="loggedOn"></Header>
-        <div class="categorie__entete">
-            <h1 class="categorie__titre">{{ categorie.libelle }}</h1>
+        <Hero :title="categorie.libelle">
             <div class="categorie__choicePagination">
                 Nb article: <span @click="changePagination(choice)" :key="i" v-for="(choice,i) in choices">{{ choice }} </span>
             </div>
             <div class="categorie__choicePage">
                 <span @click=changePage(-1) v-if="page > 1"> precedent </span> {{ page }} <span @click=changePage(1) v-if="page < totalPage"> suivant </span>
             </div>
-        </div>
+        </Hero>
         <div class="categorie__products">
         <Product :addPanier="true" :product="product" v-for="(product,i) in productList" :key="i"></Product>
         </div>
@@ -19,6 +18,7 @@
 import Header from '../../components/Header.vue'
 import Product from '../../components/Product.vue'
 import PageMixin from '../../components/Page';
+import Hero from '../../components/Hero.vue'
 export default {
     data: function(){
         return {
@@ -29,7 +29,8 @@ export default {
     },
     components: {
         Header,
-        Product
+        Product,
+        Hero
     },
     methods: {
         changePage(direction){
@@ -51,17 +52,7 @@ export default {
 }
 </script>
 <style>
-    .categorie__titre{
-        display:block;
-        font-size: 2em;
-    }
-
-    .categorie__entete {
-        color:white;
-        padding: 10px;
-        text-align:center;
-        background-color: #ffca37a8 
-    }
+    
     
     .categorie__products {
         width:100%;

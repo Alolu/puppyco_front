@@ -1,5 +1,6 @@
 <template>
     <Header :loggedOn="loggedOn"></Header>
+    
 </template>
 <script>
 import Header from '../../components/Header.vue'
