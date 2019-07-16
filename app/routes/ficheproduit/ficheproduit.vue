@@ -140,7 +140,7 @@ a.share{
 	background-color: #f5f5f5;
 	border-top: 1px solid #f1f1f1;
 	padding: 50px 10%;
-	width: 100%;
+
 }
 
 .also-like h3{
