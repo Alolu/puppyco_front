@@ -8,9 +8,10 @@
 		
 		<div class="col-1-2 product__info">				
             <h1 class ="produit__titre">{{product.titre}}</h1>
-			<h2>{{product.prix}} €</h2>
-			<h3>Description du produit</h3>
-			<p>	{{product.description}} </p>
+			<div class="produit__detail">
+				<h2>{{product.prix}} €</h2>
+				<h3>{{product.description}}</h3>
+			</div>
 			
 			<Submit value='Ajouter au panier' :no-width ="true" @click.native='ajouterPanier'></Submit>
 			
@@ -36,7 +37,7 @@
 </template>
 <script>
 import Header from '../../components/Header.vue'
-import PageMixin from '../../components/Page';
+import PageMixin from '../../components/Page'
 import Submit from '../../components/inputs/Submit.vue'
 export default {
     components: {
@@ -48,7 +49,7 @@ export default {
             
         }
     },
-    mixin:[PageMixin],
+    mixins:[PageMixin],
     methods:{
         ajouterPanier(){
             axios.post('/addToPanier', this.product).then(
@@ -136,12 +137,15 @@ a.share{
 	text-decoration: none;
 }
 
+.produit__detail{
+	color: #444;	
+}
+
 .also-like{
-	background-color: #ffca37a8;
+	background-color: #f5f5f5;
 	border-top: 1px solid #f1f1f1;
 	padding: 50px 10%;
 	width: auto;
-
 }
 
 .also-like h3{
