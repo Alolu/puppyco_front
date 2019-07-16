@@ -4,7 +4,13 @@
         <Hero title="Inscription"></Hero>
         <div class="register__wrapper">
             <label> Email </label>
-            <Input class="register__email" />
+            <Input :large="true" placeholder="Email" class="register__email" />
+            <label> Mot de passe </label>
+            <Input :large="true" placeholder="Mot de passe" class="register__password" />
+            <label> Nom </label>
+            <Input :large="true" placeholder="Nom" class="register__nom" />
+            <label> Prenom </label>
+            <Input :large="true" placeholder="Prenom" class="register__prenom" />
         </div>
     </section>
 </template>
@@ -32,3 +38,9 @@ export default {
     }
 }
 </script>
+<style>
+    .register__wrapper {
+        
+    }
+</style>
+

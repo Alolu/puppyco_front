@@ -1,6 +1,6 @@
 <template>
 <div class="product">
-	<Header></Header>
+	<Header :loggedOn="loggedOn"></Header>
 	<div class="content">
 		<div class="col-1-2 product__img">
 			<img class="imageProduit" src="/assets/img/products/test.png" img/>
@@ -137,9 +137,10 @@ a.share{
 }
 
 .also-like{
-	background-color: #f5f5f5;
+	background-color: #ffca37a8;
 	border-top: 1px solid #f1f1f1;
 	padding: 50px 10%;
+	width: auto;
 
 }
 
