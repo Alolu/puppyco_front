@@ -46,6 +46,7 @@
                 <li> Rechercher </li>
                 <!--<li><input v-on:keyup.enter ="rechercheProduit()"  type="text" placeholder="Rechercher..." /></li>-->
                 <li><input v-on:keyup.enter="produitRecherche"  type="text" placeholder="Rechercher..." /></li>
+                </div>
             </ul>
         </div>
     </nav>
@@ -69,7 +70,7 @@ export default {
         return {
             username: '',
             password: '',
-            produitcherche: ''
+            produitRecherche: ''
         }
     },
     props: ["loggedOn"],
