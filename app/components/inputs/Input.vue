@@ -3,7 +3,7 @@
         @input="$emit('input', $event.target.value)" 
         :value="value" 
         :class="{largeInput: large, input: true}" 
-        v-bind="$attrs" 
+        v-bind="$attrs"
         :placeholder="$attrs.placeholder" 
     />
 </template>

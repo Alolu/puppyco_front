@@ -19,6 +19,7 @@ module.exports = (router) => {
                 product : produit.data
             };
             req.vueOptions.head.title = "Accueil PuppyCo'"; //contient le titre de la page
+            req.vueOptions.head.styles = [{style: "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"}]
             res.renderVue(page, data, req.vueOptions); //réponse, avec le chemin de la vue, la data, et les options de la vue.
         },
     );
