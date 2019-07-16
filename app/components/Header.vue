@@ -38,12 +38,14 @@
                 <div v-if="!loggedOn">
                     <a href="/inscription"><li>S'inscrire</li></a>
                     <li> Connexion </li>
-                    <li><Input v-model="username" type="text" placeholder="Login" /></li>
-                    <li><Input v-model="password" type="password" placeholder="Password" /></li>
+                    <li><input v-model="username" type="text" placeholder="Login" /></li>
+                    <li><input v-model="password" type="password" placeholder="Password" /></li>
                     <li><Submit @click.native="logClient" /></li>
                 </div>
+                <div class='search_product'>
                 <li> Rechercher </li>
-                <li><Input type="text" placeholder="Rechercher..." /></li>
+                <!--<li><input v-on:keyup.enter ="rechercheProduit()"  type="text" placeholder="Rechercher..." /></li>-->
+                <li><input v-on:keyup.enter="produitRecherche"  type="text" placeholder="Rechercher..." /></li>
             </ul>
         </div>
     </nav>
@@ -66,7 +68,8 @@ export default {
     data: function () {
         return {
             username: '',
-            password: ''
+            password: '',
+            produitcherche: ''
         }
     },
     props: ["loggedOn"],
@@ -86,6 +89,9 @@ export default {
         },
         goToHome(){
             location.replace('/')
+        },
+        rechercheProduit(){
+            alert('yop')
         }
     }
 }
