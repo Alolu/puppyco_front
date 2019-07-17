@@ -2,7 +2,7 @@
     <input 
         @input="$emit('input', $event.target.value)" 
         :value="value" 
-        :class="{largeInput: large, input: true}" 
+        :class="{largeInput: large, input: true,quantity: quantity}" 
         v-bind="$attrs"
         :placeholder="$attrs.placeholder" 
     />
@@ -11,7 +11,7 @@
 export default {
     name: 'Input',
     inheritAttrs: false,
-    props: ['value','large']
+    props: ['value','large','quantity']
 }
 </script>
 <style>
@@ -29,5 +29,9 @@ export default {
 
     .largeInput {
         width: 220px;
+    }
+    .quantity{
+        width: 20px;
+        display: inline-block;
     }
 </style>

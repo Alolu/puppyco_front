@@ -13,10 +13,14 @@
 				<h3> {{ product.description }}</h3>
 			</div>
 			
-			<Submit :disabled="product.stock < 1" :value='addMessage' :no-width ="true" @click.native='ajouterPanier'></Submit>
-			
+			<Submit class="produit__submit" :disabled="product.stock < 1" :value='addMessage' :no-width ="true" @click.native='ajouterPanier'></Submit>
+			<div class="produit__quantity">
+				<span @click="changeQte(-1)" class="produit__button produit__remove"> - </span>
+				<Input v-model="qte" :quantity="true" />
+				<span @click="changeQte(1)" class="produit__button produit__add"> + </span>
+			</div>
 			<div class='div__logo'>
-			<h3 class="share">Share This</h3>
+			<h3 class="share sharetitle">Share This</h3>
 			<a href="" alt="facebook" class="share"><i class="fa fa-facebook"></i></a>
 			<a href="" alt="twitter" class="share"><i class="fa fa-twitter"></i></a>
 			<a href="" alt="Pinterest" class="share"><i class="fa fa-pinterest-p"></i></a>
@@ -39,20 +43,28 @@
 import Header from '../../components/Header.vue'
 import PageMixin from '../../components/Page'
 import Submit from '../../components/inputs/Submit.vue'
+import Input from '../../components/inputs/Input.vue'
 export default {
     components: {
 		Header,
-		Submit
+		Submit,
+		Input
     },
     data: function () {
         return {
-            
+            qte: 1 
         }
     },
     mixins:[PageMixin],
     methods:{
+		changeQte(direction){
+			this.qte = parseInt(this.qte) + direction;
+		},
         ajouterPanier(){
-            axios.post('/addToPanier', this.product).then(
+            axios.post('/addToPanier', {
+				id: this.product.id,
+				qte: parseInt(this.qte)
+			}).then(
                 (succes)=> {
                     (new Notyf()).confirm('Article ajouté au panier!');
                 },
@@ -73,11 +85,19 @@ export default {
 </script>
 <style>
 
-
 .product{
 	/*margin-bottom: 100px;*/
 	width: 100%;
 }
+
+.produit__quantity {
+	margin-left:15px; 
+	display: inline-block !important;
+}
+
+.produit__button {
+	margin: 0 10px;
+} 
 
 .content{
 	/*background-color: #ddd;*/
@@ -219,6 +239,14 @@ footer h3{
 }
 
 @media screen and (max-width: 960px) {
+
+	.sharetitle {
+		margin-top:10px;
+	}
+	.produit__quantity {
+		margin: 0 auto;
+		margin-top: 10px;
+	}
 	 .col-1-2 {
 	display:flex;
 	flex-direction: column;

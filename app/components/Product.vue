@@ -32,7 +32,10 @@ export default {
     },
     methods:{
         ajoutPanier(){
-            axios.post("/addToPanier",this.product).then(
+            axios.post("/addToPanier",{
+                id: this.product,
+                qte: 1
+            }).then(
                 (success)=>{
                     (new Notyf()).confirm('Article ajouté au panier!');
                 },

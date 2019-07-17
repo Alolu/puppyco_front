@@ -44,7 +44,14 @@ module.exports = (router) => {
         async (req,res)=>{
             var produit = await produitService.getProduct(req.body.id)
             if(!req.session.produit) req.session.produit = [];
-            req.session.produit.push(produit)
+            let productInPanier = req.session.produit.findIndex(obj => obj.id == req.body.id)
+            console.log(productInPanier)
+            if(productInPanier > -1){
+                req.session.produit[productInPanier].qte += req.body.qte;
+            }else{
+                req.session.produit.push(req.body)
+            }
+            console.log(req.session.produit)
             res.status(produit.status).json()
         }
     )
