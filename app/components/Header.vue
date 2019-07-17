@@ -3,15 +3,21 @@
     <nav class="nav">
         <h1 @click="goToHome()" class="nav__title"> PuppyCo'</h1>
         <img @click="goToHome()" class="nav__logo" src="/assets/img/logo.svg">
-        <ul class="nav__links__container">
+        <ul class="nav__links__container" :class="{forced: forcedModal}">
             <li class="nav__link link_1">
                 <Dropdown title="Categorie" :fields="categories"></Dropdown>
             </li>
             <li v-if="!loggedOn" class="nav__link link_2">
-                <Modal title="Se connecter">
+                <Modal :forced="forcedModal" title="Se connecter">
                     <div class="modal__flex">
                         <div class="modal__box">
                             <h3 class="header__title"> Se connecter </h3>
+                            <h5 v-if="loginRequired"> 
+                                Pour continuer vos achats, veuillez vous connecter ou vous 
+                                <a href="/inscription" class="modal__ici">
+                                    inscrire
+                                </a>
+                            </h5>
                             <div class="header__input"><Input v-model="username" :large="true" type="text" placeholder="Login" /></div>
                             <div class="header__input"><Input v-model="password" :large="true" type="password" placeholder="Password" /></div>
                             <Submit class="header__submit" :large="true" @click.native="logClient" />
@@ -74,7 +80,13 @@ export default {
             produitRecherche: ''
         }
     },
-    props: ["loggedOn"],
+    computed: {
+        forcedModal(){
+            if(this.loginRequired && !this.loggedOn) return true
+            return false
+        }
+    },
+    props: ["loggedOn","loginRequired"],
     methods: {
         logClient(){
             axios.post('/login',{
@@ -204,7 +216,7 @@ export default {
         .nav {
             justify-content: space-between
         }
-        .nav__links, .nav__links__container, .nav__link {
+        .nav__links__container {
             display: none;
         }
 
@@ -349,6 +361,9 @@ export default {
         {
         transform: scale(1.0, 1.0);
         opacity: 1;
+        }
+        .forced {
+            display:block;
         }
     }
 </style>

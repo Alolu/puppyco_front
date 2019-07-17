@@ -1,6 +1,6 @@
 <template>
 <div>
-    <Header></Header>
+    <Header :loginRequired='true' :loggedOn="loggedOn"></Header>
     <Hero title="Votre commande">
         <Stepper></Stepper>
     </Hero>
@@ -10,12 +10,14 @@
 import Header from '../../components/Header.vue';
 import Stepper from '../../components/Stepper.vue';
 import Hero from '../../components/Hero.vue';
+import PageMixin from '../../components/Page';
 export default {
     components: {
         Header,
         Stepper,
         Hero
     },
+    mixins:[PageMixin],
     data(){
         return {
 
