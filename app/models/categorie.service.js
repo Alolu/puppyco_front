@@ -17,6 +17,17 @@ class Categorie {
         )
     }
 
+    getCategories(req){
+        return api.get('/categorie').then(
+            (success)=>{
+                return success
+            },
+            (failure)=>{
+                return failure
+            }
+        )
+    }
+
     getProducts(id){
         return api.get('/produit/categorie/' + id).then(
             (success)=>{
