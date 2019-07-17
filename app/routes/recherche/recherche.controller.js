@@ -15,7 +15,7 @@ module.exports = (router) => {
             let page;
             let produit = await produitService.getSearchProduct(req.params.id)
             const data = { //envoit les données à la vue
-                product : produit.data
+                products : produit.data
             };
             req.vueOptions.head.title = "Recherche : " + req.params.id; //contient le titre de la page
             res.renderVue("recherche/recherche.vue", data, req.vueOptions); //réponse, avec le chemin de la vue, la data, et les options de la vue.

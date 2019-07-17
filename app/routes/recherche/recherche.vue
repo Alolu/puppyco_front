@@ -1,11 +1,11 @@
 <template>
     <section class="categorie">
         <Header :loggedOn="loggedOn"></Header>
-        <Hero :title="Recherche"></Hero>
+        <Hero :title="Recherche"><Input placeholder="recherche"/></Hero>
 
         <div class="recherche__products">
         
-        <Product :addPanier="true" :product="product" v-for="(product,i) in productList" :key="i"></Product>
+        <Product :addPanier="true" :product="product" v-for="(product,i) in products" :key="i"></Product>
         </div>
     </section>
 </template>
@@ -17,7 +17,7 @@ import Hero from '../../components/Hero.vue'
 export default {
     data: function(){
         return {
-           Product
+           
         }
     },
     components: {
@@ -25,13 +25,7 @@ export default {
         Product,
         Hero
     },
-    methods: {
-        changePage(direction){
-            this.page += direction
-        },
-        changePagination(choix){
-            this.paginNumber = choix
-        }
+    methods: { 
     },
     mixins:[PageMixin]
 }
