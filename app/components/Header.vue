@@ -99,7 +99,6 @@ export default {
         },
         rechercheProduit(){
             location.replace('/recherche/' + this.produitRecherche)
-            console.log(this.produitRecherche)
         }
     },
     mounted(){

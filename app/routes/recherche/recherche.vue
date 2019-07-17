@@ -1,7 +1,9 @@
 <template>
     <section class="categorie">
         <Header :loggedOn="loggedOn"></Header>
-        <Hero :title="Recherche"><Input placeholder="recherche"/></Hero>
+        <Hero :title="Recherche">
+            <Input v-model="produitsAffines" @keyup.enter.native="affinerRecherche" placeholder="Affinez votre recherche"/> 
+        </Hero>
 
         <div class="recherche__products">
         
@@ -17,7 +19,7 @@ import Hero from '../../components/Hero.vue'
 export default {
     data: function(){
         return {
-           
+            produitsAffines: ''   
         }
     },
     components: {
@@ -26,6 +28,9 @@ export default {
         Hero
     },
     methods: { 
+        affinerRecherche(){
+            console.log('test');
+        }
     },
     mixins:[PageMixin]
 }
