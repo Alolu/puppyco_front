@@ -10,10 +10,10 @@
             <h1 class ="produit__titre">{{product.titre}}</h1>
 			<div class="produit__detail">
 				<h2>{{product.prix}} €</h2>
-				<h3>{{product.description}}</h3>
+				<h3> {{ product.description }}</h3>
 			</div>
 			
-			<Submit value='Ajouter au panier' :no-width ="true" @click.native='ajouterPanier'></Submit>
+			<Submit :disabled="product.stock < 1" :value='addMessage' :no-width ="true" @click.native='ajouterPanier'></Submit>
 			
 			<div class='div__logo'>
 			<h3 class="share">Share This</h3>
@@ -61,7 +61,14 @@ export default {
                 }
             )
         }
-    }
+	},
+	computed: {
+		addMessage(){
+			let message
+			this.product.stock > 0?message="Ajouter au panier":message="Produit indisponible"
+			return message
+		}
+	}
 }
 </script>
 <style>
@@ -99,10 +106,6 @@ export default {
 	transform: scale(1.05);
 }
 
-.produit__titre{
-    margin-top: 100px;
-}
-
 
 p{
 	color: #999;
@@ -124,6 +127,7 @@ h3.share, a.share{
 
 a.share{
 	color: #444;
+	margin-top: 15px;
 }
 
 .product__info{

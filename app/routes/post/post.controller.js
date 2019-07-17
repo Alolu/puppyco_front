@@ -29,7 +29,9 @@ module.exports = (router) => {
          */
         (req, res) => {
             categorieService.getCategories(req).then((resp)=>{
-                res.status(resp.status).json(resp.data)
+                res.status(200).json(resp.data)
+            },(failure)=>{
+                res.status(401).json(false)
             })
         },
     )
