@@ -30,6 +30,19 @@ class Produit {
             }
         )
     }
+
+    getSearchProduct(produit){
+        console.log(produit)
+        return api.get("/produit/recherche/" + produit).then(
+            (success)=> {
+                return success
+            },
+            (failure)=>{
+                console.log(failure)
+            } 
+        )
+        
+    }
 }
 
 module.exports = Produit

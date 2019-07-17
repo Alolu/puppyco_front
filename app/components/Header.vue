@@ -24,7 +24,7 @@
                 <a @click="logoutClient" >Se deconnecter</a>
             </li>
             <li class="nav__link link_3">
-                <Input type="text" placeholder="Rechercher..." :large="true" />
+                <Input v-model="produitRecherche" @keyup.enter.native="rechercheProduit" placeholder="Rechercher..." :large="true" />
             </li>
         </ul>
         <div class="nav__toggle">
@@ -38,14 +38,13 @@
                 <div v-if="!loggedOn">
                     <a href="/inscription"><li>S'inscrire</li></a>
                     <li> Connexion </li>
-                    <li><input v-model="username" type="text" placeholder="Login" /></li>
-                    <li><input v-model="password" type="password" placeholder="Password" /></li>
-                    <li><Submit @click.native="logClient" /></li>
+                    <li><Input v-model="username" type="text" placeholder="Login" /></li>
+                    <li><Input v-model="password" type="password" placeholder="Password" /></li>
+                    <li><Submit @click.enter.native="logClient" /></li>
                 </div>
                 <div class='search_product'>
                 <li> Rechercher </li>
-                <!--<li><input v-on:keyup.enter ="rechercheProduit()"  type="text" placeholder="Rechercher..." /></li>-->
-                <li><input v-on:keyup.enter="produitRecherche"  type="text" placeholder="Rechercher..." /></li>
+                <li><Input v-model="produitRecherche" @keyup.native="rechercheProduit" placeholder="Rechercher..." /></li>
                 </div>
             </ul>
         </div>
@@ -92,7 +91,8 @@ export default {
             location.replace('/')
         },
         rechercheProduit(){
-            alert('yop')
+            location.replace('/recherche/' + this.produitRecherche)
+            console.log(this.produitRecherche)
         }
     }
 }
