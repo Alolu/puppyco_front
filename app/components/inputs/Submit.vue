@@ -15,6 +15,9 @@ export default {
 }
 </script>
 <style>
+    .submit__input:disabled {
+        background-color: rgba(255, 154, 2, 0.493);
+    }
     .submit__input {
         background-color: #FF9A02;
         color: white;

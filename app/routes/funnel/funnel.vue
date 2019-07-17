@@ -1,49 +1,24 @@
 <template>
-    <a :href="'/produit/'+product.id" class="product" :class="{large: large}">
-        <img src="/assets/img/products/test.png" class="product__img"/>
-        <div class="product__info"> 
-            <div>
-                <span class="product__name">{{ product.titre }}</span>
-                <span class="product__desc">{{ product.description }}</span>
-                <span class="product__price">{{ product.prix }}€</span>
-                <Submit @click.native="ajoutPanier" class="product__action" value="Ajouter au panier" v-if="addPanier" />
-            </div>
-        </div>
-    </a>
+<div>
+    <Header></Header>
+    <Hero title="Votre commande">
+        <Stepper></Stepper>
+    </Hero>
+</div>
 </template>
 <script>
-import Submit from './inputs/Submit.vue';
+import Header from '../../components/Header.vue';
+import Stepper from '../../components/Stepper.vue';
+import Hero from '../../components/Hero.vue';
 export default {
     components: {
-        Submit
+        Header,
+        Stepper,
+        Hero
     },
-    props: {
-        large: {
-            type: Boolean,
-            default: false
-        },
-        product : {
-            type: Object
-        },
-        addPanier:{
-            type: Boolean,
-            default: false
-        }
-    },
-    methods:{
-        ajoutPanier(){
-            axios.post("/addToPanier",{
-                id: this.product,
-                qte: 1
-            }).then(
-                (success)=>{
-                    (new Notyf()).confirm('Article ajouté au panier!');
-                },
-                (error)=>{
-                    (new Notyf()).alert("Erreur lors de l'ajout au panier.");
-                }
-            )
-            
+    data(){
+        return {
+
         }
     }
 }
