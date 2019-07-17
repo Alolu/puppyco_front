@@ -5,7 +5,7 @@
         <img @click="goToHome()" class="nav__logo" src="/assets/img/logo.svg">
         <ul class="nav__links__container">
             <li class="nav__link link_1">
-                <a>Categories</a>
+                <Dropdown title="Categorie" :fields="categories"></Dropdown>
             </li>
             <li v-if="!loggedOn" class="nav__link link_2">
                 <Modal title="Se connecter">
@@ -33,7 +33,7 @@
             <span></span>
             <span></span>
             <ul class="nav__menu">
-                <a href="#"><li>Categories</li></a>
+                <Dropdown title="Categorie" :fields="categories"></Dropdown>
                 <li @click="logoutClient" v-if="loggedOn"> Deconnexion </li> 
                 <div v-if="!loggedOn">
                     <a href="/inscription"><li>S'inscrire</li></a>
@@ -57,18 +57,20 @@
 import Input from './inputs/Input.vue'
 import Submit from './inputs/Submit.vue'
 import Modal from './Modal.vue'
-import { verify } from 'jsonwebtoken';
+import Dropdown from './Dropdown.vue'
 export default {
     name: 'Header',
     components: {
         Input,
         Modal,
-        Submit
+        Submit,
+        Dropdown
     },
     data: function () {
         return {
             username: '',
             password: '',
+            categories: null,
             produitRecherche: ''
         }
     },
@@ -90,10 +92,18 @@ export default {
         goToHome(){
             location.replace('/')
         },
+        getCategories(){
+            axios.get('/getCategories').then((success)=>{
+                this.categories = success.data
+            })
+        },
         rechercheProduit(){
             location.replace('/recherche/' + this.produitRecherche)
             console.log(this.produitRecherche)
         }
+    },
+    mounted(){
+        this.getCategories()
     }
 }
 </script>
@@ -136,7 +146,6 @@ export default {
         list-style-type: none;
         margin: 0;
         padding: 0;
-        overflow: hidden;
         display:inline
     }
     .link_3 {

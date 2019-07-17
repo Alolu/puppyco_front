@@ -1,6 +1,8 @@
 //@ts-check
 const Client = require('../../models/client.service')
 const Produit = require('../../models/produit.service')
+const Categorie = require('../../models/categorie.service')
+const categorieService = new Categorie();
 const clientService = new Client();
 const produitService = new Produit();
 /**
@@ -14,12 +16,23 @@ module.exports = (router) => {
          * @param {object} res
          */
         (req, res) => {
-            clientService.loginClient(req.body).then((resp)=>{
-                if(resp.status == 200) req.session.token = resp.data.token
+            clientService.loginClient(req).then((resp)=>{
                 res.status(resp.status).json(resp.data)
             })
         },
     );
+
+    router.get('/getCategories',
+        /**
+         * @param {object} req
+         * @param {object} res
+         */
+        (req, res) => {
+            categorieService.getCategories(req).then((resp)=>{
+                res.status(resp.status).json(resp.data)
+            })
+        },
+    )
 
     router.post('/addToPanier',
         /**
@@ -44,7 +57,24 @@ module.exports = (router) => {
             res.json(resp)        
         }
     )
-
+    
+    router.post('/createAccount',
+        /**
+         * @param {object} req
+         * @param {object} res
+         */
+        async (req,res)=>{
+            var client = await clientService.addClient(req);
+            if(!client) res.status(401).json()
+            req.body = {
+                username: req.body.email,
+                password: req.body.password
+            }
+            await clientService.loginClient(req)
+            res.status(200).json()
+        }
+    )
+    
     router.get("/logout",
         /**
          * @param {object} req

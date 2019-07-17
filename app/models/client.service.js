@@ -12,12 +12,24 @@ class Client {
     }
     // @ts-ignore
     loginClient(req){
-        return api.post(baseUrl + '/login_check',req).then((resp)=>{
+        return api.post(baseUrl + '/login_check',req.body).then((resp)=>{
             setToken(resp.data.token)
+            req.session.token = resp.data.token
             return resp
         }).catch((err)=>{
-            console.log(err.response)
+            console.log(err)
         })
+    }
+
+    addClient(req){
+        return api.post('/client/register',req.body).then(
+            (success)=>{
+                return success
+            },
+            (failure)=>{
+                return failure
+            }
+        )
     }
 
     verifyClient(req){
