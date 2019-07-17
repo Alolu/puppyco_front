@@ -33,14 +33,6 @@ export default {
             this.paginNumber = choix
         }
     },
-    computed: {
-        productList(){
-            return this.products.slice((this.page-1)*this.paginNumber,this.page*this.paginNumber)
-        },
-        totalPage(){
-            return  Math.ceil(this.products.length/this.paginNumber)
-        }
-    },
     mixins:[PageMixin]
 }
 </script>

@@ -13,14 +13,12 @@ module.exports = (router) => {
          */
         async (req, res) => {
             let page;
-            let produit = await produitService.getProduct(req.params.id)
-            produit.status == 200 ? page = "ficheproduit/ficheproduit.vue" : page = "error.vue"
+            let produit = await produitService.getSearchProduct(req.params.id)
             const data = { //envoit les données à la vue
                 product : produit.data
             };
-            req.vueOptions.head.title = "Accueil PuppyCo'"; //contient le titre de la page
-            req.vueOptions.head.styles = [{style: "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"}]
-            res.renderVue(page, data, req.vueOptions); //réponse, avec le chemin de la vue, la data, et les options de la vue.
+            req.vueOptions.head.title = "Recherche : " + req.params.id; //contient le titre de la page
+            res.renderVue("recherche/recherche.vue", data, req.vueOptions); //réponse, avec le chemin de la vue, la data, et les options de la vue.
         },
     );
 };
