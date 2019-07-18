@@ -9,6 +9,7 @@
     </section>
 </template>
 <script>
+import Input from '../../components/inputs/Input.vue'
 import Header from '../../components/Header.vue'
 import Product from '../../components/Product.vue'
 import PageMixin from '../../components/Page'
@@ -24,8 +25,8 @@ export default {
     components: {
         Header,
         Product,
-        Hero
-    
+        Hero,
+        Input
     },
     methods: { 
         affinerRecherche(){
