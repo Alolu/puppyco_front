@@ -33,6 +33,7 @@ class Client {
     }
 
     verifyClient(req){
+        console.log(req.session)
         if(req.session.token) {
             try {
                 var decodedKey = jwt.verify(req.session.token, key);
@@ -45,9 +46,8 @@ class Client {
     }
 
     logoutClient(req){
-        if(req.session.token) {
-            delete req.session.token
-        }
+        req.session = null
+        console.log(req.session)
         delToken()
         return true;
     }

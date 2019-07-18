@@ -5,6 +5,21 @@ class Produit {
     constructor(){
         this.baseUrl = baseUrl;
     }
+
+    getProducts(ids){
+        return api.get('/produit/multiple',{
+            data: {
+                ids:ids
+            }
+        }).then(
+            (success)=>{
+                return success.data
+            },(failure)=>(
+                console.log(failure)
+            )
+        )
+    }
+
     getRandomProducts(req){
         return api.get('/produit/random').then(
             (success)=>{
