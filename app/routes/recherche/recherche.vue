@@ -25,13 +25,8 @@ export default {
     components: {
         Header,
         Product,
-<<<<<<< HEAD
         Hero,
         Input
-=======
-        Hero
-    
->>>>>>> f39dc500654dabb3b2382484e74f7cd51fbb2f66
     },
     methods: { 
         affinerRecherche(){
