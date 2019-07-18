@@ -1,15 +1,14 @@
 <template>
     <section class="categorie">
         <Header :loggedOn="loggedOn"></Header>
-        <Hero :title="Recherche"><Input class="affinerRecherche" v-model="produitsAffines" @keyup.enter.native="affinerRecherche" placeholder="Affinez votre recherche"/></Hero>
+        <Hero :title="Recherche"><Input class="affinerRecherche" v-model="selectionProduit" @keyup.enter.native="affinerRecherche" placeholder="Affinez votre recherche"/></Hero>
             
-        <div class="recherche__products">
+        <div class="recherche__products" v-for="product in affinerRecherche">
         <Product :addPanier="true" :product="product" v-for="(product,i) in products" :key="i"></Product>
         </div>
     </section>
 </template>
 <script>
-import Input from '../../components/inputs/Input.vue'
 import Header from '../../components/Header.vue'
 import Product from '../../components/Product.vue'
 import PageMixin from '../../components/Page'
@@ -19,7 +18,8 @@ import Input from '../../components/inputs/Input.vue'
 export default {
     data: function(){
         return {
-            produitsAffines: ''   
+            selectionProduit: '',
+            product: []   
         }
     },
     components: {
@@ -28,11 +28,15 @@ export default {
         Hero,
         Input
     },
-    methods: { 
-        affinerRecherche(){
-            console.log('test')
-        }
+    computed:{
+             affinerRecherche(){
+            console.log(this.selectionProduit)
+            return this.product.filter(product => {
+                return product['titre'].toLowerCase().includes(this.selectionProduit.toLowerCase())
+            })
+        }       
     },
+
     mixins:[PageMixin]
 }
 </script>
