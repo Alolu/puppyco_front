@@ -4,6 +4,9 @@
         <h1 @click="goToHome()" class="nav__title"> PuppyCo'</h1>
         <img @click="goToHome()" class="nav__logo" src="/assets/img/logo.svg">
         <ul class="nav__links__container" :class="{forced: forcedModal}">
+            <li class="nav__link">
+                <a href="/panier">Panier</a>
+            </li>
             <li class="nav__link link_1">
                 <Dropdown title="Categorie" :fields="categories"></Dropdown>
             </li>
@@ -39,6 +42,7 @@
             <span></span>
             <span></span>
             <ul class="nav__menu">
+                <li><a href="/panier">Panier</a><li>
                 <Dropdown title="Categorie" :fields="categories"></Dropdown>
                 <li @click="logoutClient" v-if="loggedOn"> Deconnexion </li> 
                 <div v-if="!loggedOn">
@@ -179,6 +183,7 @@ export default {
 
     .nav__logo {
         width: 80px;
+        display: none;
         text-align: center;
         position: absolute;
         left: 50%;
@@ -218,6 +223,9 @@ export default {
         }
         .nav__links__container {
             display: none;
+        }
+        .nav__logo {
+            display:block;
         }
 
         a
