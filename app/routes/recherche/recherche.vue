@@ -3,7 +3,7 @@
         <Header :loggedOn="loggedOn"></Header>
         <Hero :title="Recherche"><Input class="affinerRecherche" v-model="selectionProduit" @keyup.enter.native="affinerRecherche" placeholder="Affinez votre recherche"/></Hero>
             
-        <div class="recherche__products" v-for="product in affinerRecherche">
+        <div class="recherche__products"> <!--v-for="product in affinerRecherche"-->
         <Product :addPanier="true" :product="product" v-for="(product,i) in products" :key="i"></Product>
         </div>
     </section>
