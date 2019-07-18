@@ -1,14 +1,12 @@
 <template>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 demo">
+    <div class="stepper__container">
       <div class="stepper">
         <div class="step active">
           <div class="step-inner">
             <div class="step-circle"><span>1</span></div>
           </div>
         </div>
-        <div class="step active">
+        <div class="step">
           <div class="step-inner">
             <div class="step-circle"><span>2</span></div>
           </div>
@@ -18,15 +16,8 @@
             <div class="step-circle"><span>3</span></div>
           </div>
         </div>
-        <div class="step">
-          <div class="step-inner">
-            <div class="step-circle"><span>4</span></div>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-</div>
 </template>
 
 <script>
@@ -41,6 +32,12 @@ export default {
 
 
 <style>
+
+.stepper__container {
+  width: 80%;
+  margin: 0 auto
+}
+
 .stepper {
   font-size:0.6em;
   display: flex;

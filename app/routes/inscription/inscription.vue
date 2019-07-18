@@ -51,7 +51,11 @@ export default {
                 prenom: this.prenom
             }).then(
                 (success)=>{
-                    location.replace('/')
+                    if(document.referrer.includes('funnel')){
+                        location.replace('/funnel')
+                    }else{
+                        location.replace('/')
+                    }
                 }
             )
         }

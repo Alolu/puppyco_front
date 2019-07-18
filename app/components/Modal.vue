@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div :class="{forced:forced}">
         <label class="btn" :for="noSpaceTitle + '-modal'"> {{ title }} </label>
-        <input class="modal-state" :id="noSpaceTitle + '-modal'" type="checkbox" />
+        <input :checked="forced" :disabled="forced" class="modal-state" :id="noSpaceTitle + '-modal'" type="checkbox" />
         <div class="modal">
         <label class="modal__bg" :for="noSpaceTitle + '-modal'"></label>
         <div class="modal__inner">
@@ -20,7 +20,11 @@ export default {
     props: {
         title: {
             type:String,
-            default: 's Bouton'
+            default: 'defaultBouton'
+        },
+        forced : {
+          type: Boolean,
+          default: false
         }
     },
     computed: {
@@ -33,6 +37,7 @@ export default {
 <style>
 .modal {
   opacity: 0;
+  z-index: 8;
   visibility: hidden;
   position: fixed;
   top: 0;
@@ -115,7 +120,6 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-	
   .modal__inner {
     width: 90%;
     height: 90%;

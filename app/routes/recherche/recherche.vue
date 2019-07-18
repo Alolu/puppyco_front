@@ -1,12 +1,9 @@
 <template>
     <section class="categorie">
         <Header :loggedOn="loggedOn"></Header>
-        <Hero :title="Recherche">
-            <Input v-model="produitsAffines" @keyup.enter.native="affinerRecherche" placeholder="Affinez votre recherche"/> 
-        </Hero>
-
+        <Hero :title="Recherche"><Input class="affinerRecherche" v-model="produitsAffines" @keyup.enter.native="affinerRecherche" placeholder="Affinez votre recherche"/></Hero>
+            
         <div class="recherche__products">
-        
         <Product :addPanier="true" :product="product" v-for="(product,i) in products" :key="i"></Product>
         </div>
     </section>
@@ -15,8 +12,10 @@
 import Input from '../../components/inputs/Input.vue'
 import Header from '../../components/Header.vue'
 import Product from '../../components/Product.vue'
-import PageMixin from '../../components/Page';
+import PageMixin from '../../components/Page'
 import Hero from '../../components/Hero.vue'
+import Submit from '../../components/inputs/Submit.vue'
+import Input from '../../components/inputs/Input.vue'
 export default {
     data: function(){
         return {
@@ -26,12 +25,17 @@ export default {
     components: {
         Header,
         Product,
+<<<<<<< HEAD
         Hero,
         Input
+=======
+        Hero
+    
+>>>>>>> f39dc500654dabb3b2382484e74f7cd51fbb2f66
     },
     methods: { 
         affinerRecherche(){
-            console.log('test');
+            console.log('test')
         }
     },
     mixins:[PageMixin]
