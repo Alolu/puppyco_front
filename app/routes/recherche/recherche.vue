@@ -3,7 +3,7 @@
         <Header :loggedOn="loggedOn"></Header>
         <Hero :title="Recherche"><Input class="affinerRecherche" v-model="selectionProduit" @keyup.enter.native="affinerRecherche" placeholder="Affinez votre recherche"/></Hero>
             
-        <div class="recherche__products"> <!--v-for="product in affinerRecherche"-->
+        <div class="recherche__products">
         <Product :addPanier="true" :product="product" v-for="(product,i) in products" :key="i"></Product>
         </div>
     </section>
@@ -18,8 +18,7 @@ import Input from '../../components/inputs/Input.vue'
 export default {
     data: function(){
         return {
-            selectionProduit: '',
-            product: []   
+            selectionProduit: '' 
         }
     },
     components: {
@@ -31,7 +30,6 @@ export default {
     methods: {
              affinerRecherche(){
                  axios.get("/rechercheavancee/" + this.selectionProduit).then((success)=>{
-                     console.log(success)
                      this.products = success.data
                  })
              }
