@@ -3,7 +3,7 @@
         <Header :loggedOn="loggedOn"></Header>
         <Hero title="Mon panier"></Hero>
         <div class="product__none" v-if="products.length == 0">
-            <h1> Vous n'avez aucun produit dans le panier ! </h1>
+            <h1 class="panier_vide"> Vous n'avez aucun produit dans le panier ! </h1>
         </div>
         <div v-else id="my-cart">
         <h2>Nombre d'articles</h2>
@@ -211,6 +211,16 @@ p {
   border: 2px solid gray;
   border-radius: 0 5 5 0;
   background: #808b96;
+}
+
+.panier_vide{
+  text-align:center;
+  height:200px;
+  line-height:200px;
+  text-align:center;
+  vertical-align: middle;
+  font-size: 20px;
+  margin-top: 10%;
 }
 
 </style>

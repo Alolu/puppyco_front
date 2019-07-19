@@ -31,6 +31,12 @@
             </tr>
         </table>
         <h3> Le total est de : {{ calculateTotal }}€ </h3>
+        <!-- formulaire qui permet de choisir le moyen de paiement-->
+        <Input type="checkbox" name="Carte Bleue" id="CB">
+          <Input type="checkbox" name="Carte Bleue" id="CB">
+            <Input type="checkbox" name="Carte Bleue" id="CB">
+
+        
         <Submit value="Confirmer"/>
     </section>
 </div>
