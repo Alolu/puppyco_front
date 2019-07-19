@@ -33,14 +33,18 @@
         <h3> Le total est de : {{ calculateTotal }}€ </h3>
         <!-- formulaire qui permet de choisir le moyen de paiement-->
         <div class="moyen_paiement">
-        <Input type="checkbox" name="Carte Bleue" id="CB"/>
-        <label for="CB">Carte Bleue</label>
-        <Input type="checkbox" name="Virement bancaire" id="virement"/>
-        <label for="virement">Virement bancaire</label>
-        <Input type="checkbox" name="Paypal" id="CB"/>
-        <label for="Paypal">Paypal</label></div>
-        
-                 
+            <table class="forme__paiement">
+                <tr><td><img src="../../assets/img/Logo_CB.png" alt="image"/></td>
+                <td><Input type="checkbox" name="Carte Bancaire" id="carte__bancaire" value="carte__bancaire" v-model="checkedPayment"/></td>
+                <td><label for="CB">Carte bancaire</label></td></tr>
+                <tr><td><img src="../../assets/img/virement.png" alt="image" value=""/></td>
+                <td><Input type="checkbox" name="Virement bancaire" id="virement" value="virement" v-model="checkedPayment"/></td>
+                <td><label for="virement">Virement bancaire</label></td></tr>
+                <tr><td><img src="../../assets/img/Paypal.png" alt="image" value="paypal"/></td>
+                <td><Input type="checkbox" name="Paypal" id="paypal" v-model="checkedPayment"/></td>
+                <td><label for="Paypal">Paypal</label></td></tr>
+            </table>  
+            </div>      
         <Submit value="Confirmer"/>
     </section>
 </div>
@@ -80,17 +84,29 @@ export default {
 </script>
 <style>
 .moyen_paiement{
-width:auto;
+position: relative;
+text-align: -webkit-center;
 border: solid 1px;
 color : orange;
 padding-top:2%;
 padding-bottom:2%;
 margin-left:30%;
+margin-top:5%;
 margin-right:30%;
-vertical-align: middle;
+vertical-align: middle!important;
 
 }
 
+forme__paiement.label {
+width: 20%;
+position: relative;
+display: inline-block;   
+}
+
+img {
+width: 50px;
+height: 50px;
+}
 .register__wrapper {
     margin: 0 auto;
     display:table;
