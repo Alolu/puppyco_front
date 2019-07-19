@@ -28,15 +28,15 @@ export default {
         Hero,
         Input
     },
-    computed:{
+    methods: {
              affinerRecherche(){
-            console.log(this.selectionProduit)
-            return this.product.filter(product => {
-                return product['titre'].toLowerCase().includes(this.selectionProduit.toLowerCase())
-            })
-        }       
+                 axios.get("/rechercheavancee/" + this.selectionProduit).then((success)=>{
+                     console.log(success)
+                     this.products = success.data
+                 })
+             }
     },
-
+     
     mixins:[PageMixin]
 }
 </script>
@@ -51,5 +51,10 @@ export default {
         justify-content: flex-start;
         align-items: flex-start;
         align-content: flex-start;
+    }
+
+    .affinerRecherche {
+        width: 280px!important;
+        text-align:center;
     }
 </style>
