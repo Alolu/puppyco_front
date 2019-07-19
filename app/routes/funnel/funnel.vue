@@ -5,17 +5,17 @@
         <Stepper></Stepper>
     </Hero>
     <section v-if="step == 1" class="step__first">
-        <div class="register__wrapper">
-            <label> Ville </label>
+        <table class="register__wrapper">
+            <tr><td><label> Ville </label>
             <Input v-model="ville" :large="true" placeholder="Ville" class="register__input" />
-            <label> Pays </label>
+            <label> Pays </label></td></tr>
             <Input v-model="pays" :large="true" placeholder="Pays" class="register__input" />
-            <label> Rue </label>
+            <tr><label> Rue </label>
             <Input v-model="rue" :large="true" placeholder="Rue" class="register__input" />
-            <label> Code postal </label>
-            <Input v-model="cp" :large="true" placeholder="Code postal" class="register__input" />
-            <Submit @click.native="step += 1" class="register__submit" :large="true" value="Confirmer"/>
-        </div>
+            <label> Code postal </label></tr>
+            <tr><Input v-model="cp" :large="true" placeholder="Code postal" class="register__input" />
+            <Submit @click.native="step += 1" class="register__submit" :large="true" value="Confirmer"/></tr>
+        </table>
     </section>
     <section v-if="step == 2" class="step__second">
         <table class="step__table">
@@ -32,11 +32,15 @@
         </table>
         <h3> Le total est de : {{ calculateTotal }}€ </h3>
         <!-- formulaire qui permet de choisir le moyen de paiement-->
-        <Input type="checkbox" name="Carte Bleue" id="CB">
-          <Input type="checkbox" name="Carte Bleue" id="CB">
-            <Input type="checkbox" name="Carte Bleue" id="CB">
-
+        <div class="moyen_paiement">
+        <Input type="checkbox" name="Carte Bleue" id="CB"/>
+        <label for="CB">Carte Bleue</label>
+        <Input type="checkbox" name="Virement bancaire" id="virement"/>
+        <label for="virement">Virement bancaire</label>
+        <Input type="checkbox" name="Paypal" id="CB"/>
+        <label for="Paypal">Paypal</label></div>
         
+                 
         <Submit value="Confirmer"/>
     </section>
 </div>
@@ -75,6 +79,18 @@ export default {
 }
 </script>
 <style>
+.moyen_paiement{
+width:auto;
+border: solid 1px;
+color : orange;
+padding-top:2%;
+padding-bottom:2%;
+margin-left:30%;
+margin-right:30%;
+vertical-align: middle;
+
+}
+
 .register__wrapper {
     margin: 0 auto;
     display:table;
