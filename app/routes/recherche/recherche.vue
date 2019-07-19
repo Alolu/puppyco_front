@@ -18,8 +18,7 @@ import Input from '../../components/inputs/Input.vue'
 export default {
     data: function(){
         return {
-            selectionProduit: '',
-            product: []   
+            selectionProduit: '' 
         }
     },
     components: {
