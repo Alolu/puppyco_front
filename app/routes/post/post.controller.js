@@ -94,4 +94,16 @@ module.exports = (router) => {
             res.json(resp)        
         }
     )
+
+    router.get("/rechercheavancee/:produit",  
+    /**
+    * @param {object} req
+    * @param {object} res
+    */
+   async (req,res)=>{
+      let recherche = await produitService.getSearchProduct(req.params.produit)
+      if(recherche) res.status(200).json(recherche.data)
+      else res.status(404).json()
+   } )
+    
 };
