@@ -35,13 +35,13 @@
         <div class="moyen_paiement">
             <table class="forme__paiement">
                 <tr><td><img src="../../assets/img/Logo_CB.png" alt="image"/></td>
-                <td><Input type="checkbox" name="Carte Bancaire" id="carte__bancaire" value="carte__bancaire" v-model="checkedPayment"/></td>
+                <td><Input type="radio" name="payment" id="carte__bancaire" value="carte__bancaire" v-model="checkedPayment"/></td>
                 <td><label for="CB">Carte bancaire</label></td></tr>
                 <tr><td><img src="../../assets/img/virement.png" alt="image" value=""/></td>
-                <td><Input type="checkbox" name="Virement bancaire" id="virement" value="virement" v-model="checkedPayment"/></td>
+                <td><Input type="radio" name="payment" id="virement__bancaire" value="virement" v-model="checkedPayment"/></td>
                 <td><label for="virement">Virement bancaire</label></td></tr>
                 <tr><td><img src="../../assets/img/Paypal.png" alt="image" value="paypal"/></td>
-                <td><Input type="checkbox" name="Paypal" id="paypal" v-model="checkedPayment"/></td>
+                <td><Input type="radio" name="payment" id="paypal" v-model="checkedPayment"/></td>
                 <td><label for="Paypal">Paypal</label></td></tr>
             </table>  
             </div>      
