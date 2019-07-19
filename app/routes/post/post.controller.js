@@ -36,6 +36,53 @@ module.exports = (router) => {
         },
     )
 
+    router.get('/deletePanier/:id',
+        /**
+         * @param {object} req
+         * @param {object} res
+         */
+        async (req, res) => {
+            req.session.produit.splice(req.session.produit.findIndex(obj => obj.id == req.params.id),1)
+            let produits = []
+            let produitsArray = []
+            if(req.session.produit){
+                await req.session.produit.forEach(element => {
+                    produitsArray.push(element.id)
+                }); 
+                produits = await produitService.getProducts(produitsArray)
+                await produits.forEach(element => {
+                    let id = req.session.produit.findIndex(obj => obj.id == element.id)
+                    element.qte = req.session.produit[id].qte
+                });
+            }
+            res.status(200).json(produits)
+        }
+    )
+
+    router.post('/editPanier',
+        /**
+        * @param {object} req
+        * @param {object} res
+        */
+    async (req, res) => {
+        console.log(req.body)
+        req.session.produit[req.session.produit.findIndex(obj => obj.id == req.body.id)].qte = req.body.qte
+        let produits = []
+        let produitsArray = []
+        if(req.session.produit){
+            await req.session.produit.forEach(element => {
+                produitsArray.push(element.id)
+            }); 
+            produits = await produitService.getProducts(produitsArray)
+            await produits.forEach(element => {
+                let id = req.session.produit.findIndex(obj => obj.id == element.id)
+                element.qte = req.session.produit[id].qte
+            });
+        }
+        res.status(200).json(produits)
+    }
+   )
+
     router.post('/addToPanier',
         /**
          * @param {object} req

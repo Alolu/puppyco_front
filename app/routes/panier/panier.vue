@@ -11,7 +11,10 @@
         <div id="cart-list">
             <ul>
             <li v-for="(product,i) in products" :key="i">
-                <h3 class="prod-name">{{ product.titre }}</h3>
+                <h3 class="prod-name">{{ product.id }} - {{ product.titre }}</h3>
+                <div class="produit__img">
+                    <img src="/assets/img/products/test.png">
+                </div>
                 <h3 class="price">{{ product.prix * product.qte }}</h3>
                 <p>{{ product.description}}</p>
                 <div class="produit__quantity">
@@ -19,13 +22,16 @@
                     <span> {{ product.qte }} </span>
                     <span @click="changeQte(1,i)" class="produit__button produit__add"> + </span>
                 </div> 
-                <Submit class="produit__delete" value="Supprimer" />
+                <Submit @click.native="deleteProduct(product.id)" class="produit__delete" value="Supprimer" />
             </li>
             <li class="total">
                 <h3 class="grand-total">Total (EUR)</h3>
                 <h3 class="price">{{ calculateTotal }}€</h3>
             </li>
             </ul>
+                <div class="produit__submit"> 
+                    <Submit @click.native="goToFunnel" value="Commander" />
+                </div>
             </div>
         </div>
     </div>
@@ -53,7 +59,23 @@ export default {
     methods:{
 		changeQte(direction,i){
             if(this.products[i].qte > 1 && direction == -1) this.products[i].qte += direction;
-            if(this.products[i].qte < this.products[i].stock && direction == 1) this.products[i].qte += direction; 
+            if(this.products[i].qte < this.products[i].stock && direction == 1) this.products[i].qte += direction;
+            axios.post('/editPanier',{
+                id: this.products[i].id,
+                qte: this.products[i].qte
+            }).then(
+                (success) => {
+                    console.log('ok')
+                }
+            )
+        },
+        deleteProduct(id){
+            axios.get('/deletePanier/'+id).then((success)=>{
+                this.products = success.data
+            })
+        },
+        goToFunnel(){
+            location.replace('/funnel')
         }
     },
     computed: {
@@ -72,6 +94,14 @@ export default {
 .product__none {
     display: inline;
     margin: 0 auto;
+}
+
+.produit__img {
+    height: 200px;
+}
+.produit__img img {
+    width: 100%;
+    height: 100%;
 }
 .promo p {
   text-transform: uppercase;
@@ -96,6 +126,11 @@ button {
 
 .prod h2 {
   color: white;
+}
+
+.produit__submit {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .prod:before {
