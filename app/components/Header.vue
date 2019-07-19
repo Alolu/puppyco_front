@@ -5,10 +5,10 @@
         <img @click="goToHome()" class="nav__logo" src="/assets/img/logo.svg">
         <ul class="nav__links__container" :class="{forced: forcedModal}">
             <li class="nav__link">
-                <a href="/panier">Panier</a>
+                <a href="/panier" class="modal__ici" ><img src="/assets/img/caddie.png" alt="logo"></a>
             </li>
             <li class="nav__link link_1">
-                <Dropdown title="Categorie" :fields="categories"></Dropdown>
+                <Dropdown title="Catégorie" :fields="categories"></Dropdown>
             </li>
             <li v-if="!loggedOn" class="nav__link link_2">
                 <Modal :forced="forcedModal" title="Se connecter">
@@ -30,7 +30,7 @@
                 </Modal>
             </li>
             <li v-else class="nav__link link_2">
-                <a @click="logoutClient" >Se deconnecter</a>
+                <a @click="logoutClient" >Se déconnecter</a>
             </li>
             <li class="nav__link link_3">
                 <Input v-model="produitRecherche" @keyup.enter.native="rechercheProduit" placeholder="Rechercher..." :large="true" />
@@ -43,7 +43,7 @@
             <span></span>
             <ul class="nav__menu">
                 <li><a href="/panier">Panier</a><li>
-                <Dropdown title="Categorie" :fields="categories"></Dropdown>
+                <Dropdown title="Catégorie" :fields="categories"></Dropdown>
                 <li @click="logoutClient" v-if="loggedOn"> Deconnexion </li> 
                 <div v-if="!loggedOn">
                     <a href="/inscription"><li>S'inscrire</li></a>
@@ -131,6 +131,7 @@ export default {
     .modal__ici {
         color: #ffca37a8;
         text-decoration: underline;
+        padding-bottom: 5px;
     }
     .header__register {
         margin-top: 10px;
