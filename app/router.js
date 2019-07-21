@@ -36,7 +36,7 @@ module.exports.init = (app, config) => {
             ],
             scripts: [
                 {src: "https://unpkg.com/axios/dist/axios.min.js"},
-                {src: "/assets/js/notyf.min.js"}
+                {src: "/assets/js/notyf.min.js"},
             ],
             metas : [
                 {name: 'viewport', content:'width=device-width, initial-scale=1.0'}
